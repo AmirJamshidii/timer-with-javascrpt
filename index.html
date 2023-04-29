@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>کرنومتر</h1>
+        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+        <button id="button-start">شروع</button>
+        <button id="button-stop">پایان</button>
+        <button id="button-reset">بازنشانی</button>
+    </div> 
+</body>
+<script>
+    window.onload = function () {
+        var interval;
+        var seconds = 00;
+        var tens = 00;
+        var appendsecond = getelementbyid(#seconds);
+        var appendtens = getelementbyid(#tens);
+        var buttonstart = getelementbyid(#button-start);
+        var buttonstop = getelementbyid(#button-stop);
+        var buttonreset = getelementbyid(#button-reset);
+
+        buttonstart.onclick = function () {
+            clearInterval(interval);
+            interval = setInterval (starttimer, 10);
+        }
+        buttonstop.onclick = function () {
+            clearInterval(interval);
+            
+        }
+
+        buttonreset.onclick = function () {
+            clearInterval(interval);
+            seconds = "00";
+            tens = "00";
+            appendsecond.innerHTML = seconds ;
+            appendtens.innerHTML = tens;
+        }
+
+        starttimer () => {
+            tens++;
+
+            if(tens<=9) {
+                appendtens = "0" + tens;
+            }
+            elseif (tens>9) {
+                
+                appendtens.innerHTML = tens;
+            }
+            elseif (tens>99) {
+                seconds++;
+                appendSeconds.innerHTML = "0" + seconds;
+                tens = 0;
+                appendTens.innerHTML = "0" + 0;
+            }
+        }
+    }
+</script>
+</html>
